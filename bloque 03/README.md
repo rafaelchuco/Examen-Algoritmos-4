@@ -1,79 +1,76 @@
+# o3: Listas Enlazadas 📎🔗
 
-## o3: Linked Lists 📎🔗
-
-### o3.1 ➕ **Insert at Beginning, Insert at End & Length** 🏁👶➕📏
-
----
-
-#### ❓ Problem 🤔
-
-Implement `insert_at_beginning(data)`, `insert_at_end(data)`, and maintain a `length` property in your `LinkedList` class. 🐍✨
+## o3.1 ➕ **Insertar al Inicio, Insertar al Final y Longitud** 🏁👶➕📏
 
 ---
 
-#### 📜 Description 📖
+### ❓ Problema 🤔
 
-* **Classes**:
-
-  * `Node(data)` with attributes `data` and `next` 🧩
-  * `LinkedList()` with:
-
-    * `head` (initially `None`) 🎯
-    * `length` (initially `0`) 🔢
-* **Methods to implement**:
-
-  1. **`insert_at_beginning(data)`** – create a new node at the head, update `head`, increment `length`.
-  2. **`insert_at_end(data)`** – append a new node at the tail (or beginning if empty), increment `length`.
-* **Helper**:
-
-  * `display()` returns `"val1 -> val2 -> ..."` or `"Empty list"` if no nodes 🌳
+Implementa los métodos `insert_at_beginning(data)`, `insert_at_end(data)`, y mantén una propiedad `length` en tu clase `LinkedList`. 🐍✨
 
 ---
 
-#### 🧪 Tests to Pass ✅
+### 📜 Descripción 📖
 
-1. **o3.1.1**: Mixed single insert
+Necesitas crear una estructura de datos de lista enlazada con las siguientes características:
 
-   * Actions:
+* **Clases requeridas**:
+  * `Node(data)` con atributos `data` (datos) y `next` (siguiente nodo) 🧩
+  * `LinkedList()` con:
+    * `head` (cabeza de la lista, inicialmente `None`) 🎯
+    * `length` (longitud de la lista, inicialmente `0`) 🔢
 
+* **Métodos a implementar**:
+  1. **`insert_at_beginning(data)`** – Crea un nuevo nodo al inicio de la lista, actualiza `head` e incrementa `length`
+  2. **`insert_at_end(data)`** – Agrega un nuevo nodo al final de la lista (o al inicio si está vacía), incrementa `length`
+
+* **Método auxiliar ya implementado**:
+  * `display()` retorna `"val1 -> val2 -> ..."` o `"Empty list"` si no hay nodos 🌳
+
+---
+
+### 🧪 Pruebas que Debes Pasar ✅
+
+Tu implementación debe pasar todas estas pruebas:
+
+1. **o3.1.1**: Inserción mixta simple
+   * **Acciones**:
      ```python
-     ll.insert_at_beginning(2)
-     ll.insert_at_end(3)
+     ll.insert_at_beginning(2)  # Insertar 2 al inicio
+     ll.insert_at_end(3)        # Insertar 3 al final
      ```
-   * Expect: `ll.display()` returns `'2 -> 3'` ✅
-2. **o3.1.2**: Mixed multiple inserts
+   * **Resultado esperado**: `ll.display()` debe retornar `'2 -> 3'` ✅
 
-   * Continuing above:
-
+2. **o3.1.2**: Múltiples inserciones mixtas
+   * **Continuando con el caso anterior**:
      ```python
-     ll.insert_at_beginning(1)
-     ll.insert_at_end(4)
+     ll.insert_at_beginning(1)  # Insertar 1 al inicio
+     ll.insert_at_end(4)        # Insertar 4 al final
      ```
-   * Expect: `ll.display()` returns `'1 -> 2 -> 3 -> 4'` ✅
-3. **o3.1.3**: Length tracking
+   * **Resultado esperado**: `ll.display()` debe retornar `'1 -> 2 -> 3 -> 4'` ✅
 
-   * After four successful inserts: `ll.length == 4` 🔢✅
-4. **o3.1.4**: Invalid input handling
+3. **o3.1.3**: Seguimiento de longitud
+   * **Después de cuatro inserciones exitosas**: `ll.length == 4` 🔢✅
 
-   * Record `old = ll.length` then:
-
+4. **o3.1.4**: Manejo de entrada inválida
+   * **Guarda el valor actual**: `old = ll.length`
+   * **Luego ejecuta**:
      ```python
-     ll.insert_at_beginning(None)
-     ll.insert_at_end("x")
+     ll.insert_at_beginning(None)  # Entrada inválida
+     ll.insert_at_end("x")         # Entrada inválida
      ```
-   * Expect: `ll.length` remains `old` (invalid ignored) ⚠️
-5. **o3.1.5**: Return-type verification
+   * **Resultado esperado**: `ll.length` debe permanecer igual a `old` (las entradas inválidas se ignoran) ⚠️
 
-   * Verify:
-
+5. **o3.1.5**: Verificación de tipos de retorno
+   * **Verifica que**:
      ```python
-     isinstance(ll.length, int)  # True 🆗  
-     isinstance(ll.display(), str)  # True 🆗
+     isinstance(ll.length, int)    # Debe ser True 🆗  
+     isinstance(ll.display(), str) # Debe ser True 🆗
      ```
 
 ---
 
-#### 💻 Base Code 🖥️
+### 💻 Base Code 🖥️
 
 ```python
 test_results = []
@@ -139,76 +136,82 @@ for r in test_results:
 
 ---
 
-#### 💡 Tips ✨
+### 💡 Consejos Útiles ✨
 
-* Validate `data` (e.g., skip if `data is None`) before inserting.
-* Handle **empty list** case separately in `insert_at_end`.
-* Update `length` only on valid insert operations.
-
----
-
-#### 🧠 Motivation 💭
-
-* Teaches both **prepend** (stack) and **append** (queue) operations 🔄.
-* Reinforces pointer updates and size tracking 🔢.
-* Lays groundwork for advanced structures like **deque** and **circular lists**.
+* **Validación de datos**: Verifica que `data` sea válido (por ejemplo, omite la inserción si `data is None`) antes de insertar
+* **Caso de lista vacía**: Maneja el caso especial de lista vacía por separado en `insert_at_end`
+* **Actualización de longitud**: Solo actualiza `length` cuando la operación de inserción sea válida y exitosa
+* **Gestión de punteros**: Asegúrate de actualizar correctamente los punteros `next` y `head`
 
 ---
 
-### o3.2 🔍❌ **Search & Delete** 🕵️‍♂️🗑️
+### 🧠 Motivación y Aprendizaje 💭
+
+Este ejercicio te enseña conceptos fundamentales:
+
+* **Operaciones básicas**: Tanto operaciones de **prepend** (agregar al inicio, como en una pila) como **append** (agregar al final, como en una cola) 🔄
+* **Gestión de memoria**: Refuerza la comprensión de actualizaciones de punteros y seguimiento de tamaño 🔢
+* **Fundamentos sólidos**: Establece las bases para estructuras de datos más avanzadas como **deque** y **listas circulares**
+* **Manejo de errores**: Practica la validación de entrada y el manejo robusto de casos especiales
 
 ---
 
-#### ❓ Problem 🤔
-
-Implement `search(target)` to check if a value exists, and `delete(target)` to remove the first matching node—updating `length`. 🔎❌
+## o3.2 🔍❌ **Búsqueda y Eliminación** 🕵️‍♂️🗑️
 
 ---
 
-#### 📜 Description 📖
+### ❓ Problema 🤔
 
-* **Class**: same `LinkedList` with `head`, `length`, `insert_*`, `display()`.
-* **Methods to implement**:
-
-  1. **`search(target)`** – traverse nodes, return `True` on match else `False`.
-  2. **`delete(target)`** – unlink the first matching node, decrement `length`.
+Implementa `search(target)` para verificar si un valor existe en la lista, y `delete(target)` para eliminar el primer nodo que coincida con el valor objetivo, actualizando la `length`. 🔎❌
 
 ---
 
-#### 🧪 Tests to Pass ✅
+### 📜 Descripción 📖
 
-1. **o3.2.1**: Search found
+Trabajarás con la misma clase `LinkedList` que ya tiene `head`, `length`, métodos `insert_*`, y `display()`.
 
-   * Preload list with `[1,2,3,4]`
-   * Expect: `ll.search(3) is True` ✅
-2. **o3.2.2**: Delete middle
+* **Métodos a implementar**:
+  1. **`search(target)`** – Recorre los nodos de la lista y retorna `True` si encuentra una coincidencia, `False` en caso contrario
+  2. **`delete(target)`** – Desenlaza el primer nodo que coincida con el valor objetivo y decrementa `length`
 
-   * `ll.delete(2)` → `ll.display() == '1 -> 3 -> 4'` ✅
-3. **o3.2.3**: Delete ends
+---
 
-   * `ll.delete(1)` then `ll.delete(4)` → `ll.display() == '3'` ✅
-4. **o3.2.4**: Invalid operations
+### 🧪 Pruebas que Debes Pasar ✅
 
-   * Record `old = ll.length`
+Tu implementación debe pasar todas estas pruebas:
 
+1. **o3.2.1**: Búsqueda exitosa
+   * **Preparación**: Precarga la lista con `[1,2,3,4]`
+   * **Resultado esperado**: `ll.search(3) is True` ✅
+
+2. **o3.2.2**: Eliminación en el medio
+   * **Acción**: `ll.delete(2)`
+   * **Resultado esperado**: `ll.display() == '1 -> 3 -> 4'` ✅
+
+3. **o3.2.3**: Eliminación en los extremos
+   * **Acciones**: `ll.delete(1)` luego `ll.delete(4)`
+   * **Resultado esperado**: `ll.display() == '3'` ✅
+
+4. **o3.2.4**: Operaciones inválidas
+   * **Guarda el valor actual**: `old = ll.length`
+   * **Ejecuta**:
      ```python
-     ll.search(None) is False
-     ll.delete(999)
-     ll.length == old
+     ll.search(None) is False  # Búsqueda inválida
+     ll.delete(999)            # Eliminación de valor inexistente
+     ll.length == old          # La longitud no debe cambiar
      ```
-   * Expect: no change, invalid ignored ⚠️
-5. **o3.2.5**: Return-type verification
+   * **Resultado esperado**: Sin cambios, las operaciones inválidas se ignoran ⚠️
 
-   * Verify:
-
+5. **o3.2.5**: Verificación de tipos de retorno
+   * **Verifica que**:
      ```python
-     isinstance(ll.search(3), bool)  # True 🆗  
-     isinstance(ll.length, int)      # True 🆗
+     isinstance(ll.search(3), bool)  # Debe ser True 🆗  
+     isinstance(ll.length, int)      # Debe ser True 🆗
      ```
 
 ---
 
-#### 💻 Base Code 🖥️
+### 💻 Base Code 🖥️
 
 ```python
 test_results = []
@@ -294,17 +297,30 @@ for r in test_results:
 
 ---
 
-#### 💡 Tips ✨
+### 💡 Consejos Útiles ✨
 
-* **search(target)**: iterate `while curr:`, return early on match.
-* **delete(target)**: handle head removal, then unlink using `prev` & `curr`.
-* Only decrement `length` when deletion occurs.
+* **Método search(target)**: Itera usando `while curr:` y retorna `True` inmediatamente cuando encuentres una coincidencia
+* **Método delete(target)**: 
+  - Maneja por separado la eliminación del nodo cabeza (head)
+  - Para otros nodos, usa variables `prev` (anterior) y `curr` (actual) para desenlazan correctamente
+  - Recuerda actualizar los punteros antes de eliminar el nodo
+* **Gestión de longitud**: Solo decrementa `length` cuando la eliminación realmente ocurra
+* **Validación**: Verifica que el valor objetivo sea válido antes de proceder con las operaciones
 
 ---
 
-#### 🧠 Motivation 💭
+### 🧠 Motivación y Aprendizaje 💭
 
-* Combines **lookup** and **removal**—key for dynamic collections 🔄.
-* Emphasizes robust **edge-case** handling (head/tail/absent) 🎯.
-* Prepares for advanced list manipulations like **filter** & **splice**.
+Este ejercicio avanzado te enseña:
 
+* **Operaciones de consulta**: Combina **búsqueda** y **eliminación**, operaciones clave para colecciones dinámicas 🔄
+* **Manejo robusto de casos especiales**: Enfatiza el manejo de situaciones límite como eliminación de cabeza/cola/elemento ausente 🎯
+* **Preparación para operaciones avanzadas**: Te prepara para manipulaciones más complejas de listas como **filtrado** y **empalme**
+* **Gestión eficiente de memoria**: Aprende a liberar nodos correctamente y mantener la integridad de la estructura
+
+### 🔑 Conceptos Clave
+
+- **Búsqueda lineal**: Recorrido secuencial para encontrar elementos
+- **Eliminación con preservación de enlaces**: Mantener la continuidad de la lista después de eliminar nodos
+- **Casos especiales**: Lista vacía, eliminación del primer/último elemento
+- **Validación robusta**: Manejo de entradas inválidas sin afectar la estructura

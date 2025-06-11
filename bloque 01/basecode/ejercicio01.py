@@ -1,7 +1,3 @@
-"""
-Examen de Estructuras de Datos y Algoritmos por @elliotgaramendi
-"""
-
 import time
 
 # Lista global para almacenar los resultados de las pruebas
