@@ -1,6 +1,7 @@
 import time
 
 test_results = []
+
 def record_test(test_name, condition):
     emoji = "✅" if condition else "❌"
     test_results.append(f"{emoji} {test_name}")
@@ -9,10 +10,12 @@ def constant_sum(n):
     """🔢 Compute sum of 1..n in O(1), return (sum, elapsed_time).
     If input invalid (not int or < 0), return (-1, elapsed_time)."""
     start = time.time()
-    # Your solution here 🛠️
+    if not isinstance(n, int) or n < 0:
+        end = time.time()
+        return -1, end - start
+    result = n * (n + 1) // 2
     end = time.time()
-    elapsed = end - start
-    return None, elapsed  # replace None with your sum or -1 on invalid
+    return result, end - start
 
 def test_o1_2():
     # o1.2.1: n = 0 → sum = 0
